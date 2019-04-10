@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>GMail</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <!--引用topbar-->
+        <div th:replace="common/bar::topbar"></div>
+
+        <!--引用searchbar-->
+        <div th:replace="common/bar::searchbar"></div>
+
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>商品名称</td>
+                            <td>卖家</td>
+                            <td>价格</td>
+                            <td></td>
+                        </tr>
+                        <tr th:each="cart:${cartList}">
+                            <td><a th:href="@{/goods/}+${cart.goodsId}">[[${cart.goodsValue}]]</a></td>
+                            <td>[[${cart.sellerValue}]]</td>
+                            <td>[[${cart.allPrice}]] (<span style="color:red;">加入时单价:[[${cart.inPrice}]]</span>)</td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" th:href="@{/customer/updateCart/}+${cart.id}+'?goodsId='+${cart.goodsId}+'&total='+${cart.total-1}">➖</a>
+                                &nbsp;[[${cart.total}]]&nbsp;
+                                <a class="btn btn-sm btn-danger" th:href="@{/customer/updateCart/}+${cart.id}+'?goodsId='+${cart.goodsId}+'&total='+${cart.total+1}">➕</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div><a th:href="@{/customer/toOrder}" class="btn btn-danger">结算</a></div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+
+            <hr>
+
+            <!--引用footbar-->
+            <div th:replace="common/bar::footbar"></div>
+        </div> <!-- /container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+        <script th:src="@{/asserts/js/bootstrap.min.js}"></script>
+    </body>
+</html>

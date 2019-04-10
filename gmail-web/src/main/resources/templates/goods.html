@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>GMail</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <!--引用topbar-->
+        <div th:replace="common/bar::topbar"></div>
+
+        <!--引用searchbar-->
+        <div th:replace="common/bar::searchbar"></div>
+
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    <h2>商品名称：[[${goods.goodsName}]]</h2>
+                    <p>商品简介：[[${goods.goodsContent}]]</p>
+                    <p>商品价格：[[${goods.price}]]</p>
+                    <p>商品库存：[[${goods.stock}]]</p>
+                    <p>商品销量：[[${goods.sellNum}]]</p>
+                    <p>商品点击量：[[${goods.clickNum}]]</p>
+                    <p>
+                        <a class="btn btn-danger" th:href="@{/customer/addCart/}+${goods.id}" role="button">加入购物车 &raquo;</a>
+                        <a class="btn btn-default" th:href="@{/}">返回</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+            <hr>
+
+            <!--引用footbar-->
+            <div th:replace="common/bar::footbar"></div>
+        </div> <!-- /container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+        <script th:src="@{/asserts/js/bootstrap.min.js}"></script>
+    </body>
+</html>

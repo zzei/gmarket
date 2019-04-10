@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="api" />
+        <module name="customer-provider" />
+        <module name="gmail-web" />
+        <module name="goods-provide" />
+        <module name="seller-provide" />
+        <module name="seller-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api" target="1.5" />
+      <module name="customer-provider" target="1.8" />
+      <module name="customer-web" target="1.8" />
+      <module name="demo" target="1.8" />
+      <module name="gmail-web" target="1.8" />
+      <module name="goods-provide" target="1.8" />
+      <module name="mail-api" target="1.8" />
+      <module name="order-provide" target="1.8" />
+      <module name="seller-provide" target="1.8" />
+      <module name="seller-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

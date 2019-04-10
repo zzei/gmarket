@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>springboot-web</title>
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/asserts/css/bootstrap2.min.css}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+	</head>
+
+	<body>
+		<!--引用topbar-->
+		<div th:replace="common/bar::topbar"></div>
+
+		<div class="container-fluid">
+			<!--引用侧边栏-->
+			<div class="row">
+				<div th:replace="common/bar::sidebar"></div>
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<div class="chartjs-size-monitor"
+						 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+						<div class="chartjs-size-monitor-expand"
+							 style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+							<div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+						</div>
+						<div class="chartjs-size-monitor-shrink"
+							 style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+							<div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+						</div>
+					</div>
+					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+						<h1 class="h2">
+							<a th:href="@{/customer/toAddAddress}" class="btn btn-sm btn-success">地址添加</a>
+						</h1>
+						<div class="btn-toolbar mb-2 mb-md-0">
+
+						</div>
+					</div>
+					<table class="table table-striped">
+						<tr>
+							<td>地址</td>
+							<td>联系人</td>
+							<td>联系电话</td>
+							<td>默认</td>
+							<td>操作</td>
+						</tr>
+
+						<tr th:each="address:${addressList}">
+							<td th:text="${address.address}"></td>
+							<td th:text="${address.name}"></td>
+							<td th:text="${address.phone}"></td>
+							<td th:text="${address.isDefault}==1?'※':'-'"></td>
+							<td>
+								<a class="btn btn-sm btn-primary" th:href="@{/customer/setDefault/}+${address.id}">设为默认</a>
+								<a class="btn btn-sm btn-danger" th:href="@{/customer/delAddress/}+${address.id}">删除</a>
+							</td>
+						</tr>
+					</table>
+
+
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/asserts/js/popper.min.js}" ></script>
+		<script type="text/javascript" th:src="@{/asserts/js/bootstrap.min.js}" ></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" th:src="@{/asserts/js/feather.min.js}" ></script>
+		<script>
+			feather.replace()
+		</script>
+
+	</body>
+
+</html>

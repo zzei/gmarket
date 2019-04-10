@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--topbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="topbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">Gmail</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right" th:action="@{/customer/login}" th:if="${session.customer==null}" method="post">
+                    <div class="form-group">
+                        <input type="text" placeholder="账号" class="form-control" name="customerAccount">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="密码" class="form-control" name="customerPassword">
+                    </div>
+                    <p style="color:red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                    <button type="submit" class="btn btn-success">登陆</button>
+                    <a th:href="@{/customer/reg}" class="btn btn-info">注册</a>
+                </form>
+                <div class="navbar-right" th:if="${session.customer!=null}" style="margin-top:10px;">
+                    <a class="btn btn-sm btn-primary" th:href="@{/customer/main}">[[${session.customer.customerName}]]</a>
+                    <a class="btn btn-sm btn-info" th:href="@{/customer/toCart}">购物车（[[${cartCount}]]）</a>
+                    <a class="btn btn-sm btn-success" th:href="@{/customer/orders}">我的订单</a>
+                </div>
+            </div><!--/.navbar-collapse -->
+        </div>
+    </nav>
+
+    <!--sidebar-->
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="sidebar">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:href="@{/customer/main.html}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        个人主页 <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:href="@{/customer/address}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                        地址管理
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:href="@{/order}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        我的订单
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!--searchbar-->
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" th:fragment="searchbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                       <span class="input-group-btn">
+                           <a class="btn btn-default" th:onclick="searchGoods();" id="search_href">查询商品!</a>
+                       </span>
+                        <input type="text" class="form-control" placeholder="请输入商品名..." id="search_goods">
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入店铺名...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">查询店铺!</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div>
+    </div>
+
+    <!--footbar-->
+    <footer th:fragment="footbar">
+        <p>&copy; 2019 GMail, Inc.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/seller-web/pom.xml" />
+        <option value="$PROJECT_DIR$/gmail-web/pom.xml" />
+        <option value="$PROJECT_DIR$/customer-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/seller-provide/pom.xml" />
+        <option value="$PROJECT_DIR$/goods-provide/pom.xml" />
+        <option value="$PROJECT_DIR$/order-provide/pom.xml" />
+        <option value="$PROJECT_DIR$/api/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

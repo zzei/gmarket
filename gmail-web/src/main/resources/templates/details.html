@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>GMail</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <!--引用topbar-->
+        <div th:replace="common/bar::topbar"></div>
+
+        <!--引用searchbar-->
+        <div th:replace="common/bar::searchbar"></div>
+
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>商品</td>
+                            <td>价格</td>
+                            <td>数量</td>
+                            <td>状态</td>
+                        </tr>
+                        <tr th:each="detail:${orderDetailList}">
+                            <td>[[${detail.goodsId}]]</td>
+                            <td>[[${detail.price}]]</td>
+                            <td>[[${detail.total}]]</td>
+                            <td>[[${detail.state}]]</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+
+            <hr>
+
+            <!--引用footbar-->
+            <div th:replace="common/bar::footbar"></div>
+        </div> <!-- /container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+        <script th:src="@{/asserts/js/bootstrap.min.js}"></script>
+    </body>
+</html>

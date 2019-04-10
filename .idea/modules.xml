@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customer-provider/customer-provider.iml" filepath="$PROJECT_DIR$/customer-provider/customer-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmail-web/gmail-web.iml" filepath="$PROJECT_DIR$/gmail-web/gmail-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goods-provide/goods-provide.iml" filepath="$PROJECT_DIR$/goods-provide/goods-provide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seller-provide/seller-provide.iml" filepath="$PROJECT_DIR$/seller-provide/seller-provide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seller-web/seller-web.iml" filepath="$PROJECT_DIR$/seller-web/seller-web.iml" />
+    </modules>
+  </component>
+</project>

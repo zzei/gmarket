@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title></title>
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/asserts/css/bootstrap2.min.css}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+	</head>
+
+	<body>
+		<div th:replace="common/bar::topbar"></div>
+
+
+		<div class="container-fluid">
+			<div class="row" >
+				<div th:replace="common/bar::sidebar"></div>
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<form th:action="@{/customer/address}" th:method="POST">
+						<input type="hidden" name="_method" th:if="${address!=null}" th:value="put">
+						<input type="hidden" name="id" th:if="${address!=null}" th:value="${address.id}">
+						<input type="hidden" name="customerId" th:value="${session.customer.id}">
+						<div class="form-group">
+							<label>送货地址</label>
+							<input type="text" name="address" class="form-control" placeholder="送货地址" th:value="${address!=null}?${address.address}">
+						</div>
+						<div class="form-group">
+							<label>联系人</label>
+							<input type="text" name="name" class="form-control" placeholder="联系人" th:value="${address!=null}?${address.name}">
+						</div>
+						<div class="form-group">
+							<label>联系电话</label>
+							<input type="text" name="phone" class="form-control" placeholder="联系电话" th:value="${address!=null}?${address.phone}:0">
+						</div>
+						<button type="submit" class="btn btn-primary" th:text="${address!=null}?'修改':'添加'"></button>
+						<a class="btn btn-default" th:href="@{/customer/address}">返回</a>
+					</form>
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+		<script type="text/javascript" th:src="@{/asserts/js/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/asserts/js/bootstrap.min.js}"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" th:src="@{/asserts/js/feather.min.js}"></script>
+		<script>
+			feather.replace()
+		</script>
+
+
+	</body>
+
+</html>

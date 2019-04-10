@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>GMail</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <!--引用topbar-->
+        <div th:replace="common/bar::topbar"></div>
+
+        <!--引用searchbar-->
+        <div th:replace="common/bar::searchbar"></div>
+
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>订单编号</td>
+                            <td>生成日期</td>
+                            <td>订单价格</td>
+                            <td>状态</td>
+                            <td></td>
+                        </tr>
+                        <tr th:each="order:${pages.list}">
+                            <td><a th:href="@{/customer/details/}+${order.id}">[[${order.orderNo}]]</a></td>
+                            <td>[[${order.createTime}]]</td>
+                            <td>[[${order.price}]]</td>
+                            <td>[[${order.state}]]</td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" th:href="@{/customer/pay/}+${order.id}" th:if="${order.state==0}">继续支付</a>
+                                <a class="btn btn-sm btn-danger" th:href="@{/customer/cancel/}+${order.id}" th:if="${order.state==0}">取消</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li><a th:href="@{/customer/orders}+'?pageNo='+${pages.prePage}" th:if="${pages.hasPreviousPage}">上一页</a></li>
+                    <li><a th:href="@{/customer/orders}+'?pageNo='+${pages.nextPage}" th:if="${pages.hasNextPage}">下一页</a></li>
+                </ul>
+            </nav>
+
+            <hr>
+
+            <!--引用footbar-->
+            <div th:replace="common/bar::footbar"></div>
+        </div> <!-- /container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+        <script th:src="@{/asserts/js/bootstrap.min.js}"></script>
+    </body>
+</html>
